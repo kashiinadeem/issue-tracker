@@ -17,8 +17,10 @@ const NewIssuePage = () => {
 
     return (
         <form className="max-w-xl space-y-2" onSubmit={handleSubmit(async (data) => {
-             await axios.post('/api/issues', data);
-             router.push('/issues');
+            try { await axios.post('/api/issues', data);
+             router.push('/issues');} catch (err) {
+                console.log(err)
+             }
         })}>
             <TextField.Root placeholder='Title' {...register('title')}></TextField.Root>
             <Controller name='description' control={control} render={({ field }) => <SimpleMDE placeholder='Description' {...field}></SimpleMDE>} />
