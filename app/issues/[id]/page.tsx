@@ -21,12 +21,17 @@ const IssueDetails = async ({ params }: Props) => {
         notFound();
 
     return (
-        <div className=''>
+        <div>
             <Heading>{issue.title}</Heading>
             <Flex gap='4'><IssueStatusBadge status={issue.status} />
                 <Text>{issue.createdAt.toDateString()}</Text></Flex>
-            <Card className='prose' mt='4'><p><ReactMardown>{issue.description}</ReactMardown></p></Card>
-
+            <Card className='prose' mt='4'>
+                <p>
+                    <ReactMardown>
+                        {issue.description}
+                    </ReactMardown>
+                </p>
+            </Card>
         </div>
     )
 }
